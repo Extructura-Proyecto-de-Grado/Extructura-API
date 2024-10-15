@@ -1,5 +1,6 @@
 import os
 import cv2
+from wand.image import Image
 
 from lib.enums.image_type_enum import Image_type
 
@@ -40,7 +41,9 @@ def preprocessInvoice(image_type):
                 paddingToPaint=10,
                 all=True,
             )
-            cv2.imwrite("images/data/page_preprocessed.png", image)
+            with Image(filename="images/data/page_preprocessed.png") as img:
+                img.deskew(0.4 * img.quantum_range)
+                img.save(filename="images/data/page_preprocessed.png")
         case Image_type.scan:
             image = addBorders(image, size=30, color=[125, 0, 255])
             cv2.imwrite("images/data/page_preprocessed.png", image)
@@ -51,8 +54,6 @@ def preprocessInvoice(image_type):
                 paddingToPaint=10,
                 all=True,
             )
-
-            from wand.image import Image
 
             with Image(filename="images/data/page_preprocessed.png") as img:
                 img.deskew(0.4 * img.quantum_range)
