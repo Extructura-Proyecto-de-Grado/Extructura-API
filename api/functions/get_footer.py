@@ -4,8 +4,7 @@ import pytesseract
 
 from lib.enums.invoice_type_enum import InvoiceType
 
-from lib.models.invoice_type_a_footer import AFooter
-from lib.models.invoice_type_c_footer import CFooter
+from lib.models.invoice_footer import Footer
 
 from lib.functions.invoice_related.get_footer_concept import getFooterConcept
 from lib.functions.invoice_related.get_footer_currency import getFooterCurrency
@@ -114,7 +113,7 @@ def getFooter(invoice_type):
         else:
             starting_value = 0
 
-        footer = AFooter(
+        footer = Footer(
             net_amount_untaxed=getFooterConcept(
                 img_file="images/processing/footer_value_"
                 + str(starting_value)
@@ -169,7 +168,7 @@ def getFooter(invoice_type):
             exchange_rate=exchange_rate,
         )
     else:
-        footer = CFooter(
+        footer = Footer(
             sub_total=getFooterConcept(img_file="images/processing/footer_value_1.png"),
             other_taxes_ammout=getFooterConcept(
                 img_file="images/processing/footer_value_2.png"

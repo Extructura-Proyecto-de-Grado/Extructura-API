@@ -1,18 +1,19 @@
-class AFooter:
+class Footer:
     def __init__(
         self,
         currency,
-        net_amount_untaxed,
-        net_amount_taxed,
-        vat_27,
-        vat_21,
-        vat_10_5,
-        vat_5,
-        vat_2_5,
-        vat_0,
+        exchange_rate,
         other_taxes_ammout,
         total,
-        exchange_rate,
+        net_amount_untaxed=None,
+        net_amount_taxed=None,
+        vat_27=None,
+        vat_21=None,
+        vat_10_5=None,
+        vat_5=None,
+        vat_2_5=None,
+        vat_0=None,
+        sub_total=None,
     ):
         self.currency = currency
         self.net_amount_taxed = net_amount_taxed
@@ -26,3 +27,5 @@ class AFooter:
         self.other_taxes_ammout = other_taxes_ammout
         self.total = total
         self.exchange_rate = exchange_rate
+        self.currency = currency
+        self.sub_total = sub_total

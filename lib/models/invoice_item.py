@@ -1,4 +1,4 @@
-class AItem:
+class Item:
     def __init__(
         self,
         cod,
@@ -8,8 +8,9 @@ class AItem:
         unit_price,
         discount_perc,
         subtotal,
-        vat_fee,
-        subtotal_inc_fees,
+        subtotal_inc_fees=None,
+        vat_fee=None,
+        discounted_subtotal=None,
     ):
         self.cod = cod
         self.title = title
@@ -20,3 +21,4 @@ class AItem:
         self.subtotal = subtotal
         self.vat_fee = vat_fee
         self.subtotal_inc_fees = subtotal_inc_fees
+        self.discounted_subtotal = discounted_subtotal
